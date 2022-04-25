@@ -1,0 +1,32 @@
+{
+  "name": "real-time-web-2122",
+  "version": "1.0.0",
+  "description": "RTW",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lamartm/real-time-web-2122.git"
+  },
+  "author": "M. Lamarti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lamartm/real-time-web-2122/issues"
+  },
+  "homepage": "https://github.com/lamartm/real-time-web-2122#readme",
+  "dependencies": {
+    "ejs": "^3.1.7",
+    "express": "^4.17.3",
+    "socket.io": "^4.5.0",
+    "socket.io-client": "^4.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
