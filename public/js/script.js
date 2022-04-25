@@ -3,7 +3,7 @@ import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
 const msgInput = document.getElementById("msg-input");
 const chatForm = document.getElementById("chat-form");
 
-const socket = io("http://localhost:4000");
+const socket = io();
 
 socket.on("connect", () => {
   displayMessage(`You connected with id: ${socket.id}`);
