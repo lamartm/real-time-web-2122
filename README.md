@@ -1,4 +1,5 @@
 # Real-Time Web @cmda-minor-web 2021 - 2022
+Chat: https://rtw-chat-ml.herokuapp.com/
 
 ## Table of Contents
 - [Synopsis](#synopsis)
