@@ -1,9 +1,36 @@
 <%- include ("./partials/head.ejs") %>
-<div id="msg-container"></div>
-<form id="chat-form">
-  <label for="msg-input">Message</label>
-  <input type="text" id="msg-input" />
-  <button type="submit" id="send-chat">Send</button>
-</form>
-<script type="module" src="js/script.js"></script>
+<section class="gameContainer">
+  <div id="games">
+    <article id="game1">
+      <img id="game1img" />
+      <p id="game1text"></p>
+    </article>
+    <article id="game2">
+      <img id="game2img" />
+      <p id="game2text"></p>
+    </article>
+  </div>
+  <div id="leaderboard">
+    <p class="scores firstScore"></p>
+  </div>
+</section>
+<section class="chatContainer">
+  <div id="msg-container"></div>
+  <form id="chat-form">
+    <div class="message">
+      <label for="msg-input">Message</label>
+      <input type="text" id="msg-input" />
+      <button type="submit" id="send-chat">Send</button>
+    </div>
+  </form>
+</section>
+<section id="messageContainer">
+  <div class="messagePlayer">
+    <article class="messageWrapper">
+      <p id="message1">You got it wrong!</p>
+      <p id="message2">Waiting for the other players..</p>
+    </article>
+  </div>
+</section>
+<script type="module" src="/js/script.js"></script>
 <%- include ("./partials/footer.ejs") %>
