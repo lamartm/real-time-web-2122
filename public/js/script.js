@@ -78,7 +78,7 @@ socket.on("updateLeaderboard", (scores, data, id) => {
 });
 socket.on("changeMessage", (state, firstMessage, secondMessage) => {
   messageContainer.style.display = state;
-  console.log(firstMessage);
+
   if (firstMessage && secondMessage) {
     message1.textContent = `${firstMessage}`;
     message2.textContent = `${secondMessage}`;
@@ -138,7 +138,7 @@ chatForm.addEventListener("submit", (d) => {
 
   if (msg === "") return;
   displayMessage(msg);
-  socket.emit("send-msg", msg);
+  socket.emit("send-msg", msg, selectedRoom);
 
   msgInput.value = "";
 });
@@ -154,6 +154,7 @@ const updateGameScore = (gameRating1, gameRating2, score) => {
     socket.emit("changeGame", selectedRoom, selectedUsername);
     if (score.points < 4) {
       score.points++;
+      socket.emit("updateAnswer", selectedRoom, selectedUsername, "true");
       socket.emit("updatePoints", score.points, selectedRoom, selectedUsername);
       socket.emit(
         "updateMessage",
@@ -176,12 +177,14 @@ const updateGameScore = (gameRating1, gameRating2, score) => {
       }, 1500);
 
       console.log(score.points);
-      socket.emit(
-        "scores",
-        { score: score.points },
-        selectedRoom,
-        selectedUsername
-      );
+      setTimeout(() => {
+        socket.emit(
+          "scores",
+          { score: score.points },
+          selectedRoom,
+          selectedUsername
+        );
+      }, 900);
     } else {
       socket.emit("updatePoints", 0, selectedRoom, selectedUsername);
       score.points = 0;
