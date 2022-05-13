@@ -11,6 +11,20 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 const data = [];
+const currentdate = new Date();
+
+const month =
+  currentdate.getMonth() + 1 < 10
+    ? `0${currentdate.getMonth() + 1}`
+    : currentdate.getMonth() + 1;
+
+const day =
+  currentdate.getDate() < 10
+    ? `0${currentdate.getDate()}`
+    : currentdate.getDate();
+
+const date = `${currentdate.getFullYear()}-${month}-${day}`;
+console.log(date);
 
 app.set("view engine", "ejs");
 app.set("views", "views");
@@ -62,7 +76,7 @@ server.listen(port, () => {
 
 async function getGameData() {
   return await fetch(
-    "https://api.rawg.io/api/games?key=d810cd39dd2a431ba773e48a5c657557&page_size=40&metacritic=70,100&dates=2017-01-01,2021-12-31"
+    `https://api.rawg.io/api/games?key=d810cd39dd2a431ba773e48a5c657557&page_size=40&metacritic=60,100&dates=2014-01-01,${date}`
   )
     .then((r) => r.json())
     .then((d) =>
