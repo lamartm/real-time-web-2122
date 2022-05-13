@@ -6,15 +6,6 @@
 ## App beschrijving 📱
 Met Game Rater kan je tegen je vrienden raden welke spel hoger beoordeeld is. De speler die het snelsts antwoord krijgt een punt. Speel tot 5 punten om uiteindelijk te winnen!
 
-## Features 🪂
-- Spelen met meerdere users in een room
-- Game data gefetched met naam en image
-- Speler kan kiezen welke spel een hogere rating heeft
-- Geeft feedback aan elke gebruiker wie het goed had en daarna gaat het spel verder
-- Als je het niet correct hebt krijg je een scherm te zien dat je het fout had en je nu wacht op de resterende spelers
-- Mogelijkheid om te chatten tijdens het spelen
-- Stuurt message aan elke gebruiker over wie er gewonnen heeft, na 3 seconden is de room verwijderd en verstuur ik de gebruiker naar de main page
-
 ## Drie concepten ☘️
 
 ![image](https://user-images.githubusercontent.com/55801193/168216088-7ada2695-eb20-482d-be03-850af27156d8.png)
@@ -25,6 +16,15 @@ Mijn tweede concept was eigenlijk hetzelfde als het Pokemon concept alleen nu do
 
 ![image](https://user-images.githubusercontent.com/55801193/168216102-936e9814-b565-4752-a01f-b386ac018434.png)
 Mijn derde concept was uiteindelijk de Game Rater. Twee spelers moeten een spel kiezen die een hogere rating heeft. Degene die het goed heeft krijgt een punt. Zodra een speler 5 punten heeft, hebben ze gewonnen en is het spel afgelopen.
+
+## Features 🪂
+- Spelen met meerdere users in een room
+- Game data gefetched met naam en image
+- Speler kan kiezen welke spel een hogere rating heeft
+- Geeft feedback aan elke gebruiker wie het goed had en daarna gaat het spel verder
+- Als je het niet correct hebt krijg je een scherm te zien dat je het fout had en je nu wacht op de resterende spelers
+- Mogelijkheid om te chatten tijdens het spelen
+- Stuurt message aan elke gebruiker over wie er gewonnen heeft, na 3 seconden is de room verwijderd en verstuur ik de gebruiker naar de main page
 
 ## API ✨
 Ik heb voor dit project de [RAWG API](https://rawg.io/apidocs) gebruikt. Dit is een extensieve video game database API waarvan je data kan opvragen van welk game dan ook. Ik heb de [games](https://api.rawg.io/docs/#tag/games) parameter gebruikt met de API om de informatie over de games te krijgen.
