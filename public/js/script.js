@@ -8,8 +8,6 @@ const message2 = document.getElementById("message2");
 
 const socket = io();
 
-let game = 0;
-
 let gameRating1;
 let gameRating2;
 
@@ -26,13 +24,10 @@ const game2text = document.getElementById("game2text");
 const game2img = document.getElementById("game2img");
 
 socket.on("connect", () => {
-  console.log(socket.id);
-
   socket.emit("showGames");
 });
 
 socket.on("firstLoad", (username, scores) => {
-  console.log(username);
   displayMessage(`You connected with username: ${username}`);
   socket.emit("scores", { score: scores }, selectedRoom, selectedUsername);
 });
@@ -53,7 +48,7 @@ socket.on("updateLeaderboard", (scores, data, id) => {
   const userScores = document.querySelectorAll(".scores");
   const work = (e) =>
     Array.from(userScores).some((d) => d.textContent.includes(e));
-  console.log(id);
+
   data.forEach((d) => {
     if (work(id)) {
       if (d.room === selectedRoom && d.username === id) {
@@ -85,6 +80,29 @@ socket.on("changeMessage", (state, firstMessage, secondMessage) => {
   }
 });
 
+socket.on("checkForAnswer", (check) => {
+  if (check === true) {
+    messageContainer.style.display = "initial";
+    setTimeout(() => {
+      socket.emit("changeGame", selectedRoom, selectedUsername);
+      messageContainer.style.display = "none";
+    }, 1000);
+  }
+});
+
+socket.on("updateScore", (score, game1, game2) => {
+  updateGameScore(game1, game2, score);
+});
+
+socket.on("gameWon", (user) => {
+  messageContainer.style.display = "initial";
+  message1.textContent = `${user} won the game!`;
+  message2.textContent = "Going back to the homepage..";
+  setTimeout(() => {
+    document.location.href = "/";
+  }, 3000);
+});
+
 socket.emit("page-load", selectedRoom, selectedUsername);
 
 socket.emit("updateAnswer", selectedRoom, selectedUsername, "true");
@@ -107,29 +125,6 @@ document.getElementById("game2").addEventListener("click", () => {
     gameRating2,
     gameRating1
   );
-});
-
-socket.on("checkForAnswer", (check) => {
-  if (check === true) {
-    messageContainer.style.display = "initial";
-    setTimeout(() => {
-      socket.emit("changeGame", selectedRoom, selectedUsername);
-      messageContainer.style.display = "none";
-    }, 1000);
-  }
-});
-
-socket.on("updateScore", (score, game1, game2) => {
-  updateGameScore(game1, game2, score);
-});
-
-socket.on("gameWon", (user) => {
-  messageContainer.style.display = "initial";
-  message1.textContent = `${user} won the game!`;
-  message2.textContent = "Going back to the homepage..";
-  setTimeout(() => {
-    document.location.href = "/";
-  }, 3000);
 });
 
 chatForm.addEventListener("submit", (d) => {
@@ -176,7 +171,6 @@ const updateGameScore = (gameRating1, gameRating2, score) => {
         );
       }, 1500);
 
-      console.log(score.points);
       setTimeout(() => {
         socket.emit(
           "scores",

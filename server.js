@@ -24,7 +24,6 @@ const day =
     : currentdate.getDate();
 
 const date = `${currentdate.getFullYear()}-${month}-${day}`;
-console.log(date);
 
 app.set("view engine", "ejs");
 app.set("views", "views");
