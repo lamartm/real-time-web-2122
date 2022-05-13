@@ -78,7 +78,8 @@ async function getGameData() {
     `https://api.rawg.io/api/games?key=d810cd39dd2a431ba773e48a5c657557&page_size=40&metacritic=60,100&dates=2014-01-01,${date}`
   )
     .then((r) => r.json())
-    .then((d) =>
+    .then((d) => {
+      console.log(d);
       d.results.forEach((d) => {
         if (d.background_image) {
           data.push({
@@ -87,8 +88,8 @@ async function getGameData() {
             image: d.background_image,
           });
         }
-      })
-    );
+      });
+    });
 }
 await getGameData();
 
@@ -140,11 +141,6 @@ getUserData("rooms").then(async (userData) => {
 
     socket.on("send-msg", (message, room) => {
       socket.to(room).emit("receive-msg", message);
-    });
-
-    socket.on("join-room", (room, cb) => {
-      socket.join(room);
-      cb(`Joined ${room}`);
     });
 
     socket.on("changeGame", async (room, user) => {
