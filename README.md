@@ -4,7 +4,7 @@
 [Live link](https://rtw-ml.herokuapp.com/)
 
 ## App beschrijving 📱
-Met Game Rater kan je tegen je vrienden raden welke spel hoger beoordeeld is. De speler die het snelsts antwoord krijgt een punt. Speel tot 5 punten om uiteindelijk te winnen!
+Met Game Rater kan je tegen je vrienden raden welke spel hoger beoordeeld is. De speler die het snelsts antwoord krijgt een punt. Speel tot 5 punten om uiteindelijk te winnen! Tijdens het spelen kan je ook chatten met je vrienden. 
 
 ## Drie concepten ☘️
 
