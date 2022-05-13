@@ -3,10 +3,10 @@
 ## Link 🔗
 [Live link](https://rtw-ml.herokuapp.com/)
 
-## App beschrijving
+## App beschrijving 📱
 Met Game Rater kan je tegen je vrienden raden welke spel hoger beoordeeld is. De speler die het snelsts antwoord krijgt een punt. Speel tot 5 punten om uiteindelijk te winnen!
 
-## Drie concepten
+## Drie concepten ☘️
 
 ![image](https://user-images.githubusercontent.com/55801193/168216088-7ada2695-eb20-482d-be03-850af27156d8.png)
  Mijn eerste concept was een guess that pokemon game waar je tegen je vrienden kan raden wie de pokemon is. Ik wou dit in eerste instantie uitwerken, maar ik bedacht me uiteindelijk om een ander concept uit te werken.
@@ -18,7 +18,7 @@ Mijn tweede concept was eigenlijk hetzelfde als het Pokemon concept alleen nu do
 Mijn derde concept was uiteindelijk de Game Rater. Twee spelers moeten een spel kiezen die een hogere rating heeft. Degene die het goed heeft krijgt een punt. Zodra een speler 5 punten heeft, hebben ze gewonnen en is het spel afgelopen.
 
 
-## Features
+## Features 🪂
 - Spelen met meerdere users in een room
 - Game data gefetched met naam en image
 - Speler kan kiezen welke spel een hogere rating heeft
@@ -27,10 +27,10 @@ Mijn derde concept was uiteindelijk de Game Rater. Twee spelers moeten een spel 
 - Mogelijkheid om te chatten tijdens het spelen
 - Stuurt message aan elke gebruiker over wie er gewonnen heeft, na 3 seconden is de room verwijderd en verstuur ik de gebruiker naar de main page
 
-## API
+## API ✨
 Ik heb voor dit project de [RAWG API](https://rawg.io/apidocs) gebruikt. Dit is een extensieve video game database API waarvan je data kan opvragen van welk game dan ook. Ik heb de [games](https://api.rawg.io/docs/#tag/games) parameter gebruikt met de API om de informatie over de games te krijgen.
 
-## API response
+## API response 🤖
 Als je een standaard request zou maken naar de API met de game tag dan krijg je het volgende terug:
 ```
 {
@@ -67,13 +67,13 @@ Als je een standaard request zou maken naar de API met de game tag dan krijg je 
     },
 ```
 
-## Hoe ik het heb gebruikt
+## Hoe ik het heb gebruikt 📜
 Ik heb van de data het volgende meegenomen om te gebruiken in mijn app:
 - name: Hierdoor weet ik hoe het spel heet
 - background_image: Met dit kan ik een image laten zien aan de gebruiker
 - metacritic: Hierdoor weet ik hoe hoog het spel is beoordeeld
 
-## Gebruikte parameters
+## Gebruikte parameters 🔍
 Om precies de data te krijgen die ik wil heb ik de volgende parameters toegevoegd aan de API call:
  ```
  page_size=40 // Dit is de max die ik uit een request kan halen qua games resultaten
@@ -81,30 +81,49 @@ Om precies de data te krijgen die ik wil heb ik de volgende parameters toegevoeg
  dates=2014-01-01,${date} // Hiermee geef ik aan dat ik spelen wil die uitgebracht waren van 2014 tot de huidige dag. De huidige dag is ${date} variabel die ik toevoeg
  ```
  
- ## API Key
+ ## API Key 🔑
  Als je de API wilt gebruiken moet je een API key aanvragen. Dit kan door eerst een [account the maken bij RAWG](https://rawg.io/login?forward=developer) en vervolgens een API key aan te vragen.
  
  ## Data lifecycle diagram
  ![rtw data](https://user-images.githubusercontent.com/55801193/168220099-e7987dc7-0f76-4a0f-ba2f-8767d82f3c21.jpg)
  
- ## Real-time events
- ### page-load
+ ## Real-time events ⏱️
+ ### page-load 🎊
  Zodra de gebruiker hun gebruikersnaam en room hebben ingevoerd is er een post request gevuurd waar dit meegestuurd wordt. Zodra de pagina geladen wordt, worden deze gegevens meegestuurd naar mijn page-load socket event. Hierdoor kan ik met deze gegevens checken of de gebruiker al bestaat in de database, de game data inloaden. en de leaderboard maken en updaten in het geval er nog een speler joined. 
  
-## sendCurrentRoom
+### sendCurrentRoom 🪀
 De sendCurrentRoom socket event wordt elke keer gevuurd zodra de gebruiker iets heeft beantwoord. Deze event emit dan de updateScore socket event aan de client die de data van de gebruiker die geclicked heeft meestuurd. Als de client die data binnen krijgt checkt het wat de score is, en voegt het een punt toe als ze gelijk hebben. Wanneer dit het geval is wordt dan de updatePoints socket event emit naar de server.
 
-## updatePoints 
+### updatePoints 🧨
 De updatePoints socket event update de punten die de gebruiker die geclicked heeft, maar dan in de database
  
-## scores
+### scores 💎
 Elke keer als de gebruiker een game selecteerd en een punt scoort of ongelijk heeft, wordt dit socket event gevuurd. Hierdoor kan ik de leaderboard updaten met de score die de gebruiker op dat moment dan heeft
 
-## updateAnswer
+### updateAnswer 🔋
 Wanneer de gebruiker gelijk of ongelijk heeft wordt de answer waarde die gelinked is aan hun user data in de database geupdate. Hierdoor weet ik wat voor message ik de gebruiker moet laten zien in het geval ze gelijk of ongelijk hebben.
 
-## updateMessage
+### updateMessage 🏮
 De updateMessage socket event wordt gevuurd elke keer wanneer de gebruiker iets verkeerd heeft, goed of als een van de gebruikers gewonnen heeft. De tekst van de message verandert gebasseerd op welk van de 3 states het is.
 
-## endGame
+### endGame 🕯️
 Als iemand gewonnen heeft, emit ik de gameWon socket event naar de client die dan een message laat zien elke gebruiker in de room dan x speler gewonnen heeft. Met een setTimeout verstuur ik elke gebruiker weer terug naar de homepage. Als iemand gewonnen heeft, verwijder ik elke user met die specifieke room uit de database
+
+## Installation 💾
+
+Clone naar je computes
+
+```git clone https://github.com/lamartm/real-time-web-2122.git```
+
+Install
+
+```npm install```
+
+Run
+
+```npm start```
+
+## Sources 📗
+https://rawg.io/apidocs
+https://socket.io/docs/v4/
+https://www.youtube.com/watch?v=ZKEqqIO7n-k&ab_channel=WebDevSimplified
