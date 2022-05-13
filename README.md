@@ -105,8 +105,24 @@ Wanneer de gebruiker gelijk of ongelijk heeft wordt de answer waarde die gelinke
 ### updateMessage 🏮
 De updateMessage socket event wordt gevuurd elke keer wanneer de gebruiker iets verkeerd heeft, goed of als een van de gebruikers gewonnen heeft. De tekst van de message verandert gebasseerd op welk van de 3 states het is.
 
+### show-games
+Verandert het spel die getoond wordt en checkt of er minder dan 2 spelers in een room zitten, zo ja laat die ene speler een bericht zien dat ze wachten op een andere speler
+
 ### endGame 🕯️
 Als iemand gewonnen heeft, emit ik de gameWon socket event naar de client die dan een message laat zien elke gebruiker in de room dan x speler gewonnen heeft. Met een setTimeout verstuur ik elke gebruiker weer terug naar de homepage. Als iemand gewonnen heeft, verwijder ik elke user met die specifieke room uit de database
+
+### send-msg 🕯️
+Verstuurd een text bericht die door een gebruiker is ingevuld naar alle andere gebruikers in dezelfde room
+
+### changeMessage ⚾
+Veranderd het pop up bericht die een of meerdere gebruikers zien
+
+### changeData 🎯
+Verandert het spel die getoond wordt
+
+### checkForAnswer 🧩
+Checked of beide spelers het niet goed hebben, waardoor het spel weer verder gaat voor beide clients
+
 
 ## Installation 💾
 
