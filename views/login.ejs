@@ -1,0 +1,17 @@
+<%- include ("./partials/head.ejs") %>
+<section class="login">
+  <form method="post" class="signin">
+    <p class="login-description">
+      Select an username and either create a new room or join one that your
+      friends are already in!
+    </p>
+    <div class="login-form">
+      <label class="username" for="username">Username</label>
+      <input type="text" id="username" name="username" required />
+      <label class="room" for="room">Room Name</label>
+      <input type="text" id="room" name="room" required />
+    </div>
+    <button class="button" type="submit">Enter Room</button>
+  </form>
+</section>
+<%- include ("./partials/footer.ejs") %>

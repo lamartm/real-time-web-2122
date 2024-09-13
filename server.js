@@ -44,13 +44,19 @@ app.get("/", async (req, res) => {
   });
 });
 
+app.get("/login", async (req, res) => {
+  res.render("login", {
+    pageTitle: `login`,
+  });
+});
+
 app.get("/game/:username+:room", (req, res) => {
   res.render("chat", {
     pageTitle: `game`,
   });
 });
 
-app.post("/", (req, res) => {
+app.post("/login", (req, res) => {
   getUserData("rooms").then(async (data) => {
     const userCheck = await data.findOne({
       room: req.body.room,
@@ -75,11 +81,11 @@ server.listen(port, () => {
 
 async function getGameData() {
   return await fetch(
-    `https://api.rawg.io/api/games?key=d810cd39dd2a431ba773e48a5c657557&page_size=40&metacritic=60,100&dates=2014-01-01,${date}`
+    `https://api.rawg.io/api/games?key=d810cd39dd2a431ba773e48a5c657557&page_size=40&metacritic=60,100&dates=2020-01-01,${date}`
   )
     .then((r) => r.json())
     .then((d) => {
-      console.log(d);
+      // console.log(d);
       d.results.forEach((d) => {
         if (d.background_image) {
           data.push({

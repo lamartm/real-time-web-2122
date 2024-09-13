@@ -1,26 +1,31 @@
 <%- include ("./partials/head.ejs") %>
 <section class="gameContainer">
   <div id="games">
-    <article id="game1">
+    <article class="game" id="game1">
       <img id="game1img" />
-      <p id="game1text"></p>
+      <p class="game-text" id="game1text"></p>
     </article>
-    <article id="game2">
+    <article class="game" id="game2">
       <img id="game2img" />
-      <p id="game2text"></p>
+      <p class="game-text" id="game2text"></p>
     </article>
   </div>
-  <div id="leaderboard">
-    <p class="scores firstScore"></p>
-  </div>
+  <article class="leaderboard-container">
+    <h2 class="leaderboard-text">Leaderboard</h2>
+    <div id="leaderboard">
+      <p class="scores firstScore"></p>
+    </div>
+  </article>
 </section>
 <section class="chatContainer">
   <div id="msg-container"></div>
   <form id="chat-form">
     <div class="message">
-      <label for="msg-input">Message</label>
+      <label class="message-text" for="msg-input">Message:</label>
       <input type="text" id="msg-input" />
-      <button type="submit" id="send-chat">Send</button>
+      <button class="button submit-message" type="submit" id="send-chat">
+        Send
+      </button>
     </div>
   </form>
 </section>

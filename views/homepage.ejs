@@ -1,11 +1,12 @@
 <%- include ("./partials/head.ejs") %>
 <section class="homepage">
-  <form method="post" class="signin">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" required />
-    <label for="room">Room</label>
-    <input type="text" id="room" name="room" required />
-    <button class="button" type="submit">Enter Room</button>
-  </form>
+  <h1 class="homepage-title">Game <span class="color-purple">Rater</span></h1>
+  <p class="homepage-text">
+    A game in which you and your friends battle it out to see who knows their
+    game ratings better, first to 5 points wins!
+  </p>
+  <a href="/login">
+    <button class="button login-button">Let's a go!</button>
+  </a>
 </section>
 <%- include ("./partials/footer.ejs") %>

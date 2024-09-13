@@ -140,7 +140,11 @@ chatForm.addEventListener("submit", (d) => {
 
 const displayMessage = (msg) => {
   const div = document.createElement("div");
-  div.textContent = msg;
+  if (msg.includes("You connected")) {
+    div.textContent = msg;
+  } else {
+    div.textContent = `${selectedUsername}: ${msg}`;
+  }
   document.getElementById("msg-container").append(div);
 };
 
