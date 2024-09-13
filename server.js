@@ -57,22 +57,25 @@ app.get("/game/:username+:room", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
+  const username = req.body.username.toLowerCase();
+  const room = req.body.room.toLowerCase();
+
   getUserData("rooms").then(async (data) => {
     const userCheck = await data.findOne({
-      room: req.body.room,
-      username: req.body.username,
+      room: room,
+      username: username,
     });
 
     if (userCheck === null) {
       data.insertOne({
-        username: req.body.username,
-        room: req.body.room,
+        username: username,
+        room: room,
         points: 0,
         answer: "true",
       });
     }
   });
-  res.redirect(`/game/${req.body.username}+${req.body.room}`);
+  res.redirect(`/game/${username}+${room}`);
 });
 
 server.listen(port, () => {
